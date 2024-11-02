@@ -1,5 +1,4 @@
 env
-.env
 chatbot_model.h5
 labels.pkl
 texts.pkl
