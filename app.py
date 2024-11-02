@@ -1,14 +1,16 @@
-from flask import Flask, request, jsonify
-import random
-import json
 from tensorflow.keras.models import load_model
-import numpy as np
-import pickle
+from flask import Flask, request, jsonify
 from nltk.stem import WordNetLemmatizer
+from flask_cors import CORS
+import numpy as np
+import random
+import pickle
+import json
 import nltk
 
 # Initialize Flask app
 app = Flask(__name__)
+CORS(app, resources={r"/chatbot": {"origins": "http://localhost:5173"}})
 
 # Initialize lemmatizer
 lemmatizer = WordNetLemmatizer()
@@ -69,4 +71,4 @@ def chatbot():
     return jsonify({"response": response})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host='127.0.0.1', port=5000)
